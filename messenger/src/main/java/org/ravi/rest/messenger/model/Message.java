@@ -2,11 +2,16 @@ package org.ravi.rest.messenger.model;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+
+@XmlRootElement
 public class Message {
 	private long id;
 	private String message;
 	private Date created;
 	private String author;
+	
 	public long getId() {
 		return id;
 	}
@@ -32,6 +37,16 @@ public class Message {
 		this.author = author;
 	}
 	
+	
+	public Message(String message,String author,long id) {
+		this.message = message;
+		this.author = author;
+		this.id = id;
+	}
+	
+	public Message(){
+		
+	}
 	
 
 }

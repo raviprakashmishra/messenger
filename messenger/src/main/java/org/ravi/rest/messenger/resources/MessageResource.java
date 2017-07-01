@@ -13,13 +13,13 @@ import org.ravi.rest.messenger.service.MessageService;
 @Path("/messages")
 public class MessageResource {
 	MessageService service = new MessageService();
-
+	
+	
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	public List<Message> getMessages() {
-		return service.getAllMessages();
+	public List<Message> getMessages(){
+		return service.geAlltMessages();
 	}
-	
 	
 	
 }

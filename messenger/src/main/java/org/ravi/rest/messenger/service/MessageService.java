@@ -1,20 +1,63 @@
 package org.ravi.rest.messenger.service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import org.ravi.rest.messenger.database.Database;
 import org.ravi.rest.messenger.model.Message;
 
 public class MessageService {
 	
-	public List<Message> getAllMessages(){
+	Map<Long, Message> messages = Database.messages;
+	
+	public MessageService() {
+		// TODO Auto-generated constructor stub
+		messages.put(1L,new Message("1Msg","ravi",1L ));
+		messages.put(2L,new Message("2Msg","ravi",2L));
+	}
+	
+	
+	public List<Message> geAlltMessages() {
+		return new ArrayList<>(messages.values());
+	}
+	
+	public Message getMessage(long id){
+		return messages.get(id);
+	}
+	
+	public Message addMessage(Message message){
+		if (message == null) return null;
+		messages.put(messages.size()+1l,message);
+		return message;		
+		
+	}
+	
+	public Message updateMessage(Message message){
+		if (message == null) return null;
+		
+		messages.put(message.getId(), message);
+		return message;
+	}
+	
+	public Message removeMessage(Message message){
+		messages.remove(message.getId());
+		
+		return message;
+	}
+	
+	
+	/*public List<Message> getAllMessages(){
 		Message m1 = new Message("Hello world1", "ravi", 1L, new Date());
 		Message m2 = new Message("Hello world123", "ravi", 2L, new Date());
 		 List<Message> list = new ArrayList<>();
 		 list.add(m1);
 		 list.add(m2);
-		return null;
-	}
+		return list;
+	}*/
 
 }
