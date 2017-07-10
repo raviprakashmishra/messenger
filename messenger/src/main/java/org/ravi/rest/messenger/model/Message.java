@@ -42,6 +42,7 @@ public class Message {
 		this.message = message;
 		this.author = author;
 		this.id = id;
+		this.created = new Date();
 	}
 	
 	public Message(){

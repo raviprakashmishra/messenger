@@ -1,12 +1,11 @@
 package org.ravi.rest.messenger.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 import org.ravi.rest.messenger.database.Database;
 import org.ravi.rest.messenger.model.Message;
@@ -14,16 +13,29 @@ import org.ravi.rest.messenger.model.Message;
 public class MessageService {
 	
 	Map<Long, Message> messages = Database.messages;
+	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Calendar cal = Calendar.getInstance();
 	
 	public MessageService() {
 		// TODO Auto-generated constructor stub
-		messages.put(1L,new Message("1Msg","ravi",1L ));
+		messages.put(1L,new Message("1Msg","ravi",1L));
 		messages.put(2L,new Message("2Msg","ravi",2L));
 	}
 	
 	
 	public List<Message> geAlltMessages() {
 		return new ArrayList<>(messages.values());
+	}
+	public List<Message> getAllMessagesForTheYear(int year){
+		List<Message> list = new ArrayList<>();
+		Calendar cal =  Calendar.getInstance();
+		for(Message msg:messages.values()){
+			cal.setTime(msg.getCreated());;
+			if(cal.get(Calendar.YEAR) == year)
+				list.add(msg);
+		}
+		
+		return list;
 	}
 	
 	public Message getMessage(long id){
