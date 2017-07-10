@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import org.ravi.rest.messenger.model.Profile;
 import org.ravi.rest.messenger.service.ProfileService;
 
-@Path("/profile")
+@Path("/profiles")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ProfileResource {
