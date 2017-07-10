@@ -20,15 +20,13 @@ public class ProfileService {
 	}
 	
 	
-	public List<Profile> geAllProfiles() {
-		return new ArrayList<>(profiles.values());
-	}
+	
 	
 	public Profile getProfile(String profileName){
 		return profiles.get(profileName);
 	}
 	
-	public Profile addMessage(Profile profile){
+	public Profile addProfile(Profile profile){
 		if (profile == null) return null;
 		profile.setId(profiles.size()+1);
 		profiles.put(profile.getProfileName(),profile);
@@ -47,6 +45,11 @@ public class ProfileService {
 		profiles.remove(profileName);
 		
 	}
+
+
+	public List<Profile> getAllProfiles() {
+		// TODO Auto-generated method stub
+		return new ArrayList<>(profiles.values());	}
 	
 	
 	/*public List<Message> getAllMessages(){
