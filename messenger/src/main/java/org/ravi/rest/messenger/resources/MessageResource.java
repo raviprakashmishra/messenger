@@ -59,10 +59,10 @@ public class MessageResource {
 		service.removeMessage(messageId);
 	}
 	
-	@GET
+	
 	@Path("/{messageId}/comments")
-	public String test(){
-		return "test";
+	public CommentResource getCommentResource(){
+		return new CommentResource();
 	}
 	
 }
