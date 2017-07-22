@@ -14,6 +14,9 @@ public class Message {
 	private String message;
 	private Date created;
 	private String author;
+	/**
+	 * map of commentId and comments for a message
+	 */
 	private Map<Long,Comment> comments = new HashMap<>();
 	
 	public long getId() {
