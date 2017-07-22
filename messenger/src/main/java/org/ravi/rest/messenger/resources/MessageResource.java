@@ -2,6 +2,7 @@ package org.ravi.rest.messenger.resources;
 
 import java.util.List;
 
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -10,10 +11,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.ravi.rest.messenger.model.Message;
+import org.ravi.rest.messenger.resources.beans.MessageFilterBean;
 import org.ravi.rest.messenger.service.MessageService;
 
 @Path("/messages")
@@ -23,8 +24,8 @@ public class MessageResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Message> getMessages(@QueryParam("year") int year){
-		if(year>0) return service.getAllMessagesForTheYear(year);
+	public List<Message> getMessages(@BeanParam MessageFilterBean bean){
+		if(bean.getYear()>0) return service.getAllMessagesForTheYear(bean.getYear());
 		return service.geAlltMessages();
 	}
 	
