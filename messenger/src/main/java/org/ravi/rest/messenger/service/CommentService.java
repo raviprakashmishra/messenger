@@ -7,8 +7,8 @@ import java.util.Map;
 import org.ravi.rest.messenger.database.Database;
 import org.ravi.rest.messenger.model.*;
 
-public class CustomerService {
-	Map<Long, Message> messages = Database.messages;
+public class CommentService {
+	static Map<Long, Message> messages = Database.messages;
 	
 	public List<Comment> getAllComments(long messageId){
 		 Map<Long, Comment> comments = messages.get(messageId).getComments();
